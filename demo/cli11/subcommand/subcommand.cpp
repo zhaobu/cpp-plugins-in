@@ -18,7 +18,7 @@ std::shared_ptr<SubcommandAOptions> opt_b;
 /// options. The variables of the struct are bound to the CLI options. We use a
 /// shared ptr so that the addresses of the variables remain for binding, You
 /// could return the shared pointer if you wanted to access the values in main.
-void setup_subcommand_a(CLI::App& app) {
+std::shared_ptr<SubcommandAOptions>& setup_subcommand_a(CLI::App& app) {
     // Create the option and subcommand objects.
     auto opt                            = std::make_shared<SubcommandAOptions>();
 
@@ -38,6 +38,7 @@ void setup_subcommand_a(CLI::App& app) {
     // issued. sub->callback([opt]() { run_subcommand_a(*opt); });
     opt_a = opt;
     // sub->parse(app.remaining());
+    return opt_a;
 }
 
 /// The function that runs our code.
@@ -55,7 +56,7 @@ void run_subcommand_a(std::shared_ptr<SubcommandAOptions> opt) {
     }
 }
 
-void setup_subcommand_b(CLI::App& app) {
+std::shared_ptr<SubcommandAOptions>& setup_subcommand_b(CLI::App& app) {
     // Create the option and subcommand objects.
     auto opt  = std::make_shared<SubcommandAOptions>();
 
@@ -69,6 +70,8 @@ void setup_subcommand_b(CLI::App& app) {
     // Set the run function as callback to be called when this subcommand is
     // issued. sub->callback([opt]() { run_subcommand_b(*opt); });
     opt_b = opt;
+
+    return opt_b;
 }
 
 /// The function that runs our code.

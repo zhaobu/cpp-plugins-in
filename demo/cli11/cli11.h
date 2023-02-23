@@ -326,8 +326,8 @@ int test11(int argc, char** argv) {
     app.prefix_command();
     // app.allow_extras();
 
-    setup_subcommand_a(app);
-    setup_subcommand_b(app);
+    auto opt_a = setup_subcommand_a(app);
+    auto opt_b = setup_subcommand_b(app);
 
     app.require_subcommand();
 
@@ -343,8 +343,15 @@ int test11(int argc, char** argv) {
     // They are kept alive by a shared pointer in the
     // lambda function held by CLI11
 
-    for(auto* subcom : app.get_subcommands())
-        SPDLOG_INFO("subcmd {} execute", subcom->get_name());
+    for(auto* subcom : app.get_subcommands()) {
+        auto sub_name = subcom->get_name();
+        SPDLOG_INFO("subcmd {} execute", sub_name);
+        if(sub_name.compare("run") == 0) {
+            run_subcommand_a(opt_a);
+        } else if(sub_name.compare("index") == 0) {
+            run_subcommand_b(opt_b);
+        }
+    }
 
     return 0;
 }

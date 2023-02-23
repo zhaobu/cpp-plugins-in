@@ -25,10 +25,10 @@ link_directories(${LIBS_DIR}/libs)
 
 message(Module Build : ${PROJECT_NAME})
 # 定义SRC变量，其值为当前目录下所有的源代码文件
-file(GLOB_RECURSE source_h_src ${LIBS_DIR}/include/*.h
+file(GLOB_RECURSE source_h_src ${LIBS_DIR}/3rd/include/utils/*.h
      ${PROJECT_SOURCE_DIR}/*.h)
 
-file(GLOB_RECURSE source_cpp_src ${LIBS_DIR}/include/*.cpp
+file(GLOB_RECURSE source_cpp_src ${LIBS_DIR}/3rd/include/utils/*.cpp
      ${PROJECT_SOURCE_DIR}/*.cpp)
 
 # aux_source_directory(. DIR_SRCS)
