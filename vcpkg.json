@@ -1,0 +1,9 @@
+{
+    "name": "cpp-plugins-in",
+    "description": "For more information: http://aka.ms/vcpkg",
+    "dependencies": [
+      "spdlog",
+      "fmt",
+      "cli11"
+    ]
+  }
